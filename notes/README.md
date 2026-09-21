@@ -3,6 +3,7 @@
 ## Unit I
 
 - [Recurrence Relations](unit1/01_recurrences.md)
+- [Master’s Theorem](unit1/02_masters_theorem.md)
 
 ## Unit II
 
@@ -21,3 +22,21 @@
 - [DFS Edge Classification](unit2/12_dfs_edge_classification.md)
 - [Articulation Points](unit2/13_articulation_points.md)
 - [Bridges](unit2/14_bridges.md)
+
+## Unit III
+
+- [Unit III Index](unit3/README.md)
+- [Greedy Method](unit3/01_greedy_method.md)
+- [Activity Selection](unit3/02_activity_selection.md)
+- [Fractional Knapsack](unit3/03_fractional_knapsack.md)
+- [Huffman Coding](unit3/04_huffman_coding.md)
+- [MST Basics](unit3/05_mst_basics.md)
+- [Disjoint Set Union](unit3/06_disjoint_set_union.md)
+- [Kruskal's Algorithm](unit3/07_kruskal.md)
+- [Prim's Algorithm](unit3/08_prim.md)
+- [Shortest Path Basics](unit3/09_shortest_path_basics.md)
+- [Dijkstra's Algorithm](unit3/10_dijkstra.md)
+- [Bellman-Ford Algorithm](unit3/11_bellman_ford.md)
+- [Dijkstra vs Bellman-Ford](unit3/12_dijkstra_vs_bellman_ford.md)
+- [Greedy PYQ Patterns](unit3/13_greedy_pyq_patterns.md)
+- [Important Comparisons](unit3/14_comparisons.md)

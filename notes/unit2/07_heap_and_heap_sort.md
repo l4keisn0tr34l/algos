@@ -92,7 +92,98 @@ HeapSort(A, n):
 
 ---
 
-## 6. Complexity
+## 6. Insert and Delete-Max Algorithms
+
+### Insert in Max Heap
+
+```text
+Insert(A, key):
+    increase heap size by 1
+    place key at the last position
+    i = last index
+
+    while i > 0 and A[parent(i)] < A[i]:
+        swap A[i], A[parent(i)]
+        i = parent(i)
+```
+
+### Delete Maximum
+
+```text
+DeleteMax(A):
+    maxValue = A[0]
+    A[0] = A[last]
+    decrease heap size by 1
+    MaxHeapify(A, heapSize, 0)
+    return maxValue
+```
+
+---
+
+## 7. C++ Implementation
+
+```cpp
+void maxHeapify(vector<int>& a, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && a[left] > a[largest]) largest = left;
+    if (right < n && a[right] > a[largest]) largest = right;
+
+    if (largest != i) {
+        swap(a[i], a[largest]);
+        maxHeapify(a, n, largest);
+    }
+}
+
+void buildMaxHeap(vector<int>& a) {
+    int n = a.size();
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        maxHeapify(a, n, i);
+    }
+}
+
+void heapSort(vector<int>& a) {
+    int n = a.size();
+    buildMaxHeap(a);
+
+    for (int i = n - 1; i >= 1; i--) {
+        swap(a[0], a[i]);
+        maxHeapify(a, i, 0);
+    }
+}
+
+void insertMaxHeap(vector<int>& heap, int key) {
+    heap.push_back(key);
+    int i = heap.size() - 1;
+
+    while (i > 0) {
+        int parent = (i - 1) / 2;
+        if (heap[parent] >= heap[i]) break;
+        swap(heap[parent], heap[i]);
+        i = parent;
+    }
+}
+
+int deleteMax(vector<int>& heap) {
+    if (heap.empty()) return -1;
+
+    int maxValue = heap[0];
+    heap[0] = heap.back();
+    heap.pop_back();
+
+    if (!heap.empty()) {
+        maxHeapify(heap, heap.size(), 0);
+    }
+
+    return maxValue;
+}
+```
+
+---
+
+## 8. Complexity
 
 | Operation | Complexity |
 |---|---|
@@ -105,7 +196,7 @@ HeapSort(A, n):
 
 ---
 
-## 7. Exam Perspective
+## 9. Exam Perspective
 
 Common PYQs:
 

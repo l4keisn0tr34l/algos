@@ -41,7 +41,89 @@ This means `v`'s subtree cannot reach `u` or any ancestor of `u` without using e
 
 ---
 
-## 4. Complexity
+## 4. Algorithm / Pseudocode
+
+```text
+FindBridges(G):
+    mark all vertices unvisited
+    parent[v] = NIL for all vertices
+    disc[v] = 0, low[v] = 0
+    time = 0
+
+    for each vertex u:
+        if u is unvisited:
+            DFS_Bridge(u)
+```
+
+```text
+DFS_Bridge(u):
+    mark u visited
+    disc[u] = low[u] = ++time
+
+    for each neighbor v of u:
+        if v is not visited:
+            parent[v] = u
+            DFS_Bridge(v)
+
+            low[u] = min(low[u], low[v])
+
+            if low[v] > disc[u]:
+                print edge (u, v) as bridge
+
+        else if v != parent[u]:
+            low[u] = min(low[u], disc[v])
+```
+
+---
+
+## 5. C++ Implementation
+
+```cpp
+void dfsBridge(int u, vector<vector<int>>& adj, vector<int>& disc,
+               vector<int>& low, vector<int>& parent,
+               vector<bool>& visited, vector<pair<int,int>>& bridges,
+               int& timer) {
+
+    visited[u] = true;
+    disc[u] = low[u] = ++timer;
+
+    for (int v : adj[u]) {
+        if (!visited[v]) {
+            parent[v] = u;
+            dfsBridge(v, adj, disc, low, parent, visited, bridges, timer);
+
+            low[u] = min(low[u], low[v]);
+
+            if (low[v] > disc[u]) {
+                bridges.push_back({u, v});
+            }
+        }
+        else if (v != parent[u]) {
+            low[u] = min(low[u], disc[v]);
+        }
+    }
+}
+
+vector<pair<int,int>> findBridges(vector<vector<int>>& adj) {
+    int V = adj.size();
+    vector<int> disc(V, 0), low(V, 0), parent(V, -1);
+    vector<bool> visited(V, false);
+    vector<pair<int,int>> bridges;
+    int timer = 0;
+
+    for (int i = 0; i < V; i++) {
+        if (!visited[i]) {
+            dfsBridge(i, adj, disc, low, parent, visited, bridges, timer);
+        }
+    }
+
+    return bridges;
+}
+```
+
+---
+
+## 6. Complexity
 
 ```text
 O(V + E)
@@ -49,7 +131,7 @@ O(V + E)
 
 ---
 
-## 5. Articulation Point vs Bridge
+## 7. Articulation Point vs Bridge
 
 | Concept | Removal of | Effect |
 |---|---|---|
@@ -58,7 +140,7 @@ O(V + E)
 
 ---
 
-## 6. Exam Perspective
+## 8. Exam Perspective
 
 Common questions:
 

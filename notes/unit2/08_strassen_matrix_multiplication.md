@@ -30,7 +30,71 @@ Strassen reduces this to **7 recursive multiplications**, at the cost of more ad
 
 ---
 
-## 3. Recurrence
+## 3. Algorithm / Formula
+
+Divide matrices `A` and `B` into four submatrices each:
+
+```text
+A = [A11 A12]
+    [A21 A22]
+
+B = [B11 B12]
+    [B21 B22]
+```
+
+Compute these 7 products:
+
+```text
+P1 = (A11 + A22)(B11 + B22)
+P2 = (A21 + A22)B11
+P3 = A11(B12 - B22)
+P4 = A22(B21 - B11)
+P5 = (A11 + A12)B22
+P6 = (A21 - A11)(B11 + B12)
+P7 = (A12 - A22)(B21 + B22)
+```
+
+Then compute result matrix `C`:
+
+```text
+C11 = P1 + P4 - P5 + P7
+C12 = P3 + P5
+C21 = P2 + P4
+C22 = P1 - P2 + P3 + P6
+```
+
+---
+
+## 4. Pseudocode
+
+```text
+Strassen(A, B, n):
+    if n == 1:
+        return A * B
+
+    divide A into A11, A12, A21, A22
+    divide B into B11, B12, B21, B22
+
+    P1 = Strassen(A11 + A22, B11 + B22, n/2)
+    P2 = Strassen(A21 + A22, B11, n/2)
+    P3 = Strassen(A11, B12 - B22, n/2)
+    P4 = Strassen(A22, B21 - B11, n/2)
+    P5 = Strassen(A11 + A12, B22, n/2)
+    P6 = Strassen(A21 - A11, B11 + B12, n/2)
+    P7 = Strassen(A12 - A22, B21 + B22, n/2)
+
+    C11 = P1 + P4 - P5 + P7
+    C12 = P3 + P5
+    C21 = P2 + P4
+    C22 = P1 - P2 + P3 + P6
+
+    combine C11, C12, C21, C22 into C
+    return C
+```
+
+---
+
+## 5. Recurrence
 
 ```text
 T(n) = 7T(n/2) + O(n^2)
@@ -56,7 +120,7 @@ O(n^2.807)
 
 ---
 
-## 4. Exam Perspective
+## 6. Exam Perspective
 
 Common questions:
 
@@ -67,7 +131,7 @@ Common questions:
 
 ---
 
-## 5. Important Point
+## 7. Important Point
 
 Strassen is faster asymptotically for large matrices, but for small matrices normal multiplication may be better due to overhead.
 

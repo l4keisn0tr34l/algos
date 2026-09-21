@@ -38,6 +38,8 @@ Merge:
 
 ## 3. Pseudocode
 
+### Merge Sort Algorithm
+
 ```text
 MergeSort(A, low, high):
     if low >= high:
@@ -47,6 +49,82 @@ MergeSort(A, low, high):
     MergeSort(A, low, mid)
     MergeSort(A, mid+1, high)
     Merge(A, low, mid, high)
+```
+
+### Merge Algorithm
+
+Assumption:
+
+```text
+A[low ... mid] and A[mid+1 ... high] are already sorted.
+```
+
+Goal:
+
+```text
+Merge both sorted parts into one sorted segment A[low ... high].
+```
+
+```text
+Merge(A, low, mid, high):
+    create empty temporary array temp
+
+    i = low
+    j = mid + 1
+
+    while i <= mid and j <= high:
+        if A[i] <= A[j]:
+            append A[i] to temp
+            i = i + 1
+        else:
+            append A[j] to temp
+            j = j + 1
+
+    while i <= mid:
+        append A[i] to temp
+        i = i + 1
+
+    while j <= high:
+        append A[j] to temp
+        j = j + 1
+
+    copy temp back into A[low ... high]
+```
+
+### Small Merge Example
+
+```text
+Left  = [2, 5, 8]
+Right = [1, 3, 9]
+```
+
+Compare front elements repeatedly:
+
+```text
+2 vs 1 → take 1
+2 vs 3 → take 2
+5 vs 3 → take 3
+5 vs 9 → take 5
+8 vs 9 → take 8
+Right still has 9 → take 9
+```
+
+Merged result:
+
+```text
+[1, 2, 3, 5, 8, 9]
+```
+
+Merge takes linear time:
+
+```text
+O(high - low + 1)
+```
+
+For a segment of size `n`:
+
+```text
+O(n)
 ```
 
 ---

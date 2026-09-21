@@ -30,7 +30,33 @@ BFS(G, source):
                 enqueue v
 ```
 
-## 3. Complexity
+## 3. C++ Implementation
+
+```cpp
+void BFS(int source, vector<vector<int>>& adj) {
+    int V = adj.size();
+    vector<bool> visited(V, false);
+    queue<int> q;
+
+    visited[source] = true;
+    q.push(source);
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        cout << u << " ";
+
+        for (int v : adj[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                q.push(v);
+            }
+        }
+    }
+}
+```
+
+## 4. Complexity
 
 ```text
 O(V + E)
@@ -58,7 +84,29 @@ DFS(u):
             DFS(v)
 ```
 
-## 3. Complexity
+## 3. C++ Implementation
+
+```cpp
+void DFS(int u, vector<vector<int>>& adj, vector<bool>& visited) {
+    visited[u] = true;
+    cout << u << " ";
+
+    for (int v : adj[u]) {
+        if (!visited[v]) {
+            DFS(v, adj, visited);
+        }
+    }
+}
+```
+
+Call it like this:
+
+```cpp
+vector<bool> visited(V, false);
+DFS(0, adj, visited);
+```
+
+## 4. Complexity
 
 ```text
 O(V + E)

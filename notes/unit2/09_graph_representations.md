@@ -83,7 +83,89 @@ O(V + E)
 
 ---
 
-## 5. Comparison
+## 5. Algorithms to Build Representations
+
+### Build Adjacency Matrix
+
+For an undirected unweighted graph:
+
+```text
+BuildMatrix(V, edges):
+    create V × V matrix initialized with 0
+
+    for each edge (u, v):
+        matrix[u][v] = 1
+        matrix[v][u] = 1
+
+    return matrix
+```
+
+For directed graph, only do:
+
+```text
+matrix[u][v] = 1
+```
+
+For weighted graph, store weight instead of `1`.
+
+---
+
+### Build Adjacency List
+
+For an undirected graph:
+
+```text
+BuildList(V, edges):
+    create array/list adj of size V
+
+    for each edge (u, v):
+        add v to adj[u]
+        add u to adj[v]
+
+    return adj
+```
+
+For directed graph, only do:
+
+```text
+add v to adj[u]
+```
+
+---
+
+## 6. C++ Implementation
+
+```cpp
+vector<vector<int>> buildMatrix(int V, vector<pair<int,int>>& edges) {
+    vector<vector<int>> matrix(V, vector<int>(V, 0));
+
+    for (auto edge : edges) {
+        int u = edge.first;
+        int v = edge.second;
+        matrix[u][v] = 1;
+        matrix[v][u] = 1;  // remove this line for directed graph
+    }
+
+    return matrix;
+}
+
+vector<vector<int>> buildList(int V, vector<pair<int,int>>& edges) {
+    vector<vector<int>> adj(V);
+
+    for (auto edge : edges) {
+        int u = edge.first;
+        int v = edge.second;
+        adj[u].push_back(v);
+        adj[v].push_back(u);  // remove this line for directed graph
+    }
+
+    return adj;
+}
+```
+
+---
+
+## 7. Comparison
 
 | Feature | Matrix | List |
 |---|---|---|

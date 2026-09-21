@@ -33,7 +33,38 @@ ConnectedComponents(G):
 
 ---
 
-## 4. Complexity
+## 4. C++ Implementation
+
+```cpp
+void dfsComponent(int u, vector<vector<int>>& adj, vector<bool>& visited) {
+    visited[u] = true;
+
+    for (int v : adj[u]) {
+        if (!visited[v]) {
+            dfsComponent(v, adj, visited);
+        }
+    }
+}
+
+int countConnectedComponents(vector<vector<int>>& adj) {
+    int V = adj.size();
+    vector<bool> visited(V, false);
+    int count = 0;
+
+    for (int i = 0; i < V; i++) {
+        if (!visited[i]) {
+            count++;
+            dfsComponent(i, adj, visited);
+        }
+    }
+
+    return count;
+}
+```
+
+---
+
+## 5. Complexity
 
 ```text
 O(V + E)
@@ -41,7 +72,7 @@ O(V + E)
 
 ---
 
-## 5. Exam Perspective
+## 6. Exam Perspective
 
 Common questions:
 

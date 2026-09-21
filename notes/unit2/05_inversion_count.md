@@ -63,7 +63,99 @@ Because all elements from `i` to `mid` in left half are greater than `right[j]`.
 
 ---
 
-## 5. Complexity
+## 5. Algorithm / Pseudocode
+
+### Main Algorithm
+
+```text
+CountInversions(A, low, high):
+    if low >= high:
+        return 0
+
+    mid = (low + high) / 2
+
+    leftCount  = CountInversions(A, low, mid)
+    rightCount = CountInversions(A, mid + 1, high)
+    crossCount = MergeAndCount(A, low, mid, high)
+
+    return leftCount + rightCount + crossCount
+```
+
+### Merge and Count Algorithm
+
+```text
+MergeAndCount(A, low, mid, high):
+    i = low
+    j = mid + 1
+    count = 0
+    temp = empty array
+
+    while i <= mid and j <= high:
+        if A[i] <= A[j]:
+            append A[i] to temp
+            i = i + 1
+        else:
+            append A[j] to temp
+            count = count + (mid - i + 1)
+            j = j + 1
+
+    while i <= mid:
+        append A[i] to temp
+        i = i + 1
+
+    while j <= high:
+        append A[j] to temp
+        j = j + 1
+
+    copy temp back to A[low ... high]
+    return count
+```
+
+---
+
+## 6. C++ Implementation
+
+```cpp
+long long mergeAndCount(vector<int>& a, int low, int mid, int high) {
+    vector<int> temp;
+    int i = low, j = mid + 1;
+    long long count = 0;
+
+    while (i <= mid && j <= high) {
+        if (a[i] <= a[j]) {
+            temp.push_back(a[i++]);
+        } else {
+            temp.push_back(a[j++]);
+            count += (mid - i + 1);
+        }
+    }
+
+    while (i <= mid) temp.push_back(a[i++]);
+    while (j <= high) temp.push_back(a[j++]);
+
+    for (int k = low; k <= high; k++) {
+        a[k] = temp[k - low];
+    }
+
+    return count;
+}
+
+long long countInversions(vector<int>& a, int low, int high) {
+    if (low >= high) return 0;
+
+    int mid = low + (high - low) / 2;
+
+    long long left = countInversions(a, low, mid);
+    long long right = countInversions(a, mid + 1, high);
+    long long cross = mergeAndCount(a, low, mid, high);
+
+    return left + right + cross;
+}
+```
+
+---
+
+## 7. Complexity
 
 Same as Merge Sort:
 
@@ -79,7 +171,7 @@ O(n)
 
 ---
 
-## 6. Exam Perspective
+## 8. Exam Perspective
 
 Common PYQ:
 

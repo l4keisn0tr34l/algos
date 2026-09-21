@@ -25,7 +25,39 @@ DNC(problem):
 
 ---
 
-## 3. Common Examples
+## 3. Generic Algorithm / Pseudocode
+
+```text
+DivideAndConquer(problem):
+    if problem is small enough:
+        solve directly
+        return answer
+
+    divide problem into smaller subproblems
+
+    answer1 = DivideAndConquer(subproblem1)
+    answer2 = DivideAndConquer(subproblem2)
+    ...
+
+    finalAnswer = Combine(answer1, answer2, ...)
+    return finalAnswer
+```
+
+Example recurrence format:
+
+```text
+T(n) = aT(n/b) + f(n)
+```
+
+Where:
+
+- `a` = number of recursive subproblems
+- `n/b` = size of each subproblem
+- `f(n)` = divide/combine work done outside recursion
+
+---
+
+## 4. Common Examples
 
 | Algorithm | Divide | Combine |
 |---|---|---|
@@ -37,7 +69,7 @@ DNC(problem):
 
 ---
 
-## 4. Recurrence Form
+## 5. Recurrence Form
 
 Many divide-and-conquer algorithms have recurrence:
 
@@ -55,13 +87,13 @@ Where:
 
 ---
 
-## 5. Exam Definition
+## 6. Exam Definition
 
 A divide-and-conquer algorithm solves a problem by dividing it into smaller subproblems, recursively solving them, and combining their solutions to obtain the final answer.
 
 ---
 
-## 6. Common Mistakes
+## 7. Common Mistakes
 
 - Forgetting the combine step.
 - Thinking every recursive algorithm is divide and conquer.
