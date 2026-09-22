@@ -32,6 +32,22 @@ right child = 2i + 2
 parent      = (i - 1) / 2
 ```
 
+For 1-based indexing, as used in many exam pseudocodes:
+
+```text
+left child  = 2i
+right child = 2i + 1
+parent      = floor(i / 2)
+```
+
+---
+
+## Screenshot Reference
+
+The following screenshot uses **1-based indexing**:
+
+![Heap Sort Pseudocode](../../assets/heapsort_pseudocode.png)
+
 ---
 
 ## 3. Helper Function: Max-Heapify
