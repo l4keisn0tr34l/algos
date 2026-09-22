@@ -26,6 +26,7 @@
 ## Unit III
 
 - [Unit III Index](unit3/README.md)
+- [MinHeap Helper Functions](unit3/00_minheap_helper.md)
 - [Greedy Method](unit3/01_greedy_method.md)
 - [Activity Selection](unit3/02_activity_selection.md)
 - [Fractional Knapsack](unit3/03_fractional_knapsack.md)

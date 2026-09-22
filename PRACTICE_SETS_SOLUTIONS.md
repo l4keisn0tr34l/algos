@@ -582,16 +582,21 @@ Greedy does not always work. Example: 0/1 knapsack.
 
 ## Activity Selection
 
+Exam-friendly version without using `-infinity`:
+
 ```text
 ActivitySelection(activities):
-    sort by finish time
-    selected = empty
-    lastFinish = -infinity
+    sort activities by increasing finish time
 
-    for each activity (s, f):
-        if s >= lastFinish:
-            add activity
-            lastFinish = f
+    selected = empty list
+
+    add activities[1] to selected
+    lastFinish = finish time of activities[1]
+
+    for i = 2 to n:
+        if start time of activities[i] >= lastFinish:
+            add activities[i] to selected
+            lastFinish = finish time of activities[i]
 
     return selected
 ```
@@ -601,6 +606,8 @@ Complexity:
 ```text
 O(n log n)
 ```
+
+Note: If array indexing starts from 0 in code, use first activity as `activities[0]` and loop from index `1`.
 
 ---
 

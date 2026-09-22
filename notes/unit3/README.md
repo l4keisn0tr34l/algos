@@ -2,6 +2,7 @@
 
 PYQ-heavy unit. Study order:
 
+0. [MinHeap Helper Functions](00_minheap_helper.md)
 1. [Greedy Method](01_greedy_method.md)
 2. [Activity Selection](02_activity_selection.md)
 3. [Fractional Knapsack](03_fractional_knapsack.md)
