@@ -16,14 +16,18 @@ Once selected, its shortest distance is finalized.
 
 ## Algorithm / Pseudocode
 
+### Main Dijkstra Algorithm
+
 ```text
 Dijkstra(G, source):
     for each vertex v:
         dist[v] = infinity
+        parent[v] = NIL
+
     dist[source] = 0
 
     create min-priority queue Q
-    insert (0, source) into Q
+    Insert(Q, (0, source))
 
     while Q is not empty:
         (d, u) = ExtractMin(Q)
@@ -31,14 +35,38 @@ Dijkstra(G, source):
         if d > dist[u]:
             continue
 
-        for each edge (u, v, w):
-            if dist[u] + w < dist[v]:
-                dist[v] = dist[u] + w
-                parent[v] = u
-                insert (dist[v], v) into Q
+        for each edge (u, v, w) adjacent to u:
+            Relax(u, v, w, Q)
 
     return dist
 ```
+
+### Helper Function: Relax
+
+```text
+Relax(u, v, w, Q):
+    if dist[u] + w < dist[v]:
+        dist[v] = dist[u] + w
+        parent[v] = u
+        Insert(Q, (dist[v], v))
+```
+
+### Helper Operation: ExtractMin
+
+```text
+ExtractMin(Q):
+    remove and return vertex with minimum distance value
+```
+
+### Why Relax is needed
+
+Relaxation checks whether going through `u` improves the currently known shortest distance to `v`.
+
+```text
+if dist[u] + w < dist[v]
+```
+
+then a shorter path has been found.
 
 ---
 

@@ -85,7 +85,7 @@ O(V + E)
 
 ## 5. Algorithms to Build Representations
 
-### Build Adjacency Matrix
+### Helper Function: Build Adjacency Matrix
 
 For an undirected unweighted graph:
 
@@ -110,7 +110,7 @@ For weighted graph, store weight instead of `1`.
 
 ---
 
-### Build Adjacency List
+### Helper Function: Build Adjacency List
 
 For an undirected graph:
 

@@ -47,6 +47,45 @@ right edge = 1
 
 Code of a character is path from root to leaf.
 
+### Helper Function: Generate Codes
+
+After building the Huffman tree, traverse it to assign codes.
+
+```text
+GenerateCodes(node, code):
+    if node is NULL:
+        return
+
+    if node is a leaf:
+        print node.character and code
+        return
+
+    GenerateCodes(node.left, code + "0")
+    GenerateCodes(node.right, code + "1")
+```
+
+### Complete Exam Pseudocode
+
+```text
+HuffmanCoding(characters, frequencies):
+    root = Huffman(characters, frequencies)
+    GenerateCodes(root, "")
+```
+
+### Helper Operations Used
+
+```text
+Insert(Q, node):
+    insert node into min-priority queue using node.freq as key
+```
+
+```text
+ExtractMin(Q):
+    remove and return node with minimum frequency
+```
+
+In exams, it is usually enough to name `Insert` and `ExtractMin` as priority queue operations.
+
 ---
 
 ## Complexity

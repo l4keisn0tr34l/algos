@@ -65,7 +65,7 @@ Because all elements from `i` to `mid` in left half are greater than `right[j]`.
 
 ## 5. Algorithm / Pseudocode
 
-### Main Algorithm
+### Main Algorithm: CountInversions
 
 ```text
 CountInversions(A, low, high):
@@ -81,7 +81,7 @@ CountInversions(A, low, high):
     return leftCount + rightCount + crossCount
 ```
 
-### Merge and Count Algorithm
+### Helper Function: MergeAndCount
 
 ```text
 MergeAndCount(A, low, mid, high):

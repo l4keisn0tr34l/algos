@@ -12,8 +12,27 @@ Expected Complexity: O(E log E)
 """
 
 
+class DSU:
+    def __init__(self, n):
+        # TODO: initialize parent and rank/size arrays
+        pass
+
+    def find(self, x):
+        # TODO: return representative of x's set
+        # Use path compression.
+        pass
+
+    def union(self, a, b):
+        # TODO: merge sets of a and b
+        # Return True if merge happened, False if already in same set.
+        pass
+
+
 def kruskal_mst(V, edges):
-    # TODO: sort edges by weight and use DSU to avoid cycles
+    # TODO:
+    # 1. Sort edges by weight.
+    # 2. Use DSU.find to check if an edge forms a cycle.
+    # 3. Use DSU.union when adding an edge to MST.
     pass
 
 

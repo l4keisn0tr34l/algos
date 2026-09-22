@@ -51,7 +51,7 @@ MergeSort(A, low, high):
     Merge(A, low, mid, high)
 ```
 
-### Merge Algorithm
+### Helper Function: Merge
 
 Assumption:
 

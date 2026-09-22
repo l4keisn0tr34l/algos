@@ -18,23 +18,46 @@ Why `V - 1`? A shortest simple path can contain at most `V - 1` edges.
 
 ## Algorithm / Pseudocode
 
+### Main Bellman-Ford Algorithm
+
 ```text
 BellmanFord(V, edges, source):
     for each vertex v:
         dist[v] = infinity
+        parent[v] = NIL
+
     dist[source] = 0
 
     repeat V - 1 times:
-        for each edge (u, v, w):
-            if dist[u] != infinity and dist[u] + w < dist[v]:
-                dist[v] = dist[u] + w
-                parent[v] = u
+        for each edge (u, v, w) in edges:
+            Relax(u, v, w)
 
-    for each edge (u, v, w):
+    for each edge (u, v, w) in edges:
         if dist[u] != infinity and dist[u] + w < dist[v]:
             report negative cycle
+            return false
 
     return dist
+```
+
+### Helper Function: Relax
+
+```text
+Relax(u, v, w):
+    if dist[u] != infinity and dist[u] + w < dist[v]:
+        dist[v] = dist[u] + w
+        parent[v] = u
+```
+
+### Negative Cycle Check Helper Idea
+
+```text
+HasNegativeCycle(edges):
+    for each edge (u, v, w):
+        if dist[u] != infinity and dist[u] + w < dist[v]:
+            return true
+
+    return false
 ```
 
 ---

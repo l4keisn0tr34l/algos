@@ -11,8 +11,16 @@ Expected Complexity: O(V + E)
 """
 
 
+def dfs_component(u, adj, visited):
+    # TODO: helper DFS to mark all vertices in one component
+    pass
+
+
 def count_components(adj):
-    # TODO: run DFS/BFS from each unvisited vertex
+    # TODO:
+    # 1. Create visited array.
+    # 2. For each unvisited vertex, increment count and call dfs_component.
+    # 3. Return count.
     pass
 
 

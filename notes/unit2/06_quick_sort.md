@@ -14,6 +14,8 @@ Then it recursively sorts the left and right parts.
 
 ## 2. Pseudocode
 
+### Main Algorithm: QuickSort
+
 ```text
 QuickSort(A, low, high):
     if low < high:
@@ -22,7 +24,11 @@ QuickSort(A, low, high):
         QuickSort(A, p+1, high)
 ```
 
-Partition using last element as pivot:
+### Helper Function: Partition
+
+Partition places the pivot in its correct sorted position and returns that pivot index.
+
+Using last element as pivot:
 
 ```text
 Partition(A, low, high):

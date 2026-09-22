@@ -18,6 +18,8 @@ Every time we start DFS/BFS from an unvisited vertex, we discover one connected 
 
 ## 3. Algorithm
 
+### Main Algorithm: Count Connected Components
+
 ```text
 ConnectedComponents(G):
     mark all vertices unvisited
@@ -26,9 +28,20 @@ ConnectedComponents(G):
     for each vertex v:
         if v is not visited:
             count++
-            DFS(v)
+            DFSComponent(v)
 
     return count
+```
+
+### Helper Function: DFSComponent
+
+```text
+DFSComponent(u):
+    mark u visited
+
+    for each neighbor v of u:
+        if v is not visited:
+            DFSComponent(v)
 ```
 
 ---

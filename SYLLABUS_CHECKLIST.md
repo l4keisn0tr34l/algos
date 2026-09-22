@@ -34,16 +34,16 @@ to:
 
 ## Basics
 
-- [ ] Concept of algorithmic efficiency
-- [ ] Runtime analysis of algorithms
-- [ ] Operation counting from code
+- [x] Concept of algorithmic efficiency
+- [x] Runtime analysis of algorithms
+- [x] Operation counting from code
 - [ ] Best case analysis
 - [ ] Average case analysis
-- [ ] Worst case analysis
+- [x] Worst case analysis
 
 ## Asymptotic Notations
 
-- [ ] Big-O notation
+- [x] Big-O notation
 - [ ] Big-Omega notation
 - [ ] Big-Theta notation
 - [ ] Difference between `O`, `Ω`, and `Θ`
@@ -62,10 +62,10 @@ to:
 
 ## Recurrences
 
-- [ ] Form recurrence relations from recursive algorithms
-- [ ] Expansion / substitution method
+- [x] Form recurrence relations from recursive algorithms
+- [x] Expansion / substitution method
 - [ ] Recursion tree method
-- [ ] Master theorem
+- [x] Master theorem
 - [ ] Runtime analysis of divide-and-conquer algorithms
 - [ ] Mixed recurrence practice
 
@@ -81,27 +81,26 @@ to:
 
 ## Binary Search
 
-- [ ] Binary Search intuition
-- [ ] Binary Search dry run
-- [ ] Binary Search pseudocode
-- [ ] Binary Search implementation
-- [ ] Binary Search complexity
+- [x] Binary Search intuition
+- [x] Binary Search dry run
+- [x] Binary Search pseudocode
+- [x] Binary Search implementation
+- [x] Binary Search complexity
 
 ## Binary Search PYQ Variants
 
-- [ ] First `1` in sorted binary array
-- [ ] Search in rotated sorted array
-- [ ] Fixed point problem: `A[i] = i`
+- [x] First `1` in sorted binary array
+- [x] Search in rotated sorted array
+- [x] Fixed point problem: `A[i] = i`
 
 ## Merge Sort
-
-- [ ] Merge Sort intuition
-- [ ] Merge Sort dry run
+- [x] Merge Sort intuition
+- [x] Merge Sort dry run
 - [ ] Merge algorithm
 - [ ] Merge Sort pseudocode
-- [ ] Merge Sort implementation
-- [ ] Merge Sort recurrence: `T(n) = 2T(n/2) + n`
-- [ ] Merge Sort complexity
+- [x] Merge Sort implementation
+- [x] Merge Sort recurrence: `T(n) = 2T(n/2) + n`
+- [x] Merge Sort complexity
 
 ## Inversion Count
 

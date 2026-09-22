@@ -12,8 +12,16 @@ Expected Complexity: O(V + E)
 """
 
 
+def dfs_util(u, adj, visited, order):
+    # TODO: helper function for recursive DFS
+    pass
+
+
 def dfs(adj, source):
-    # TODO: implement recursive or iterative DFS
+    # TODO:
+    # 1. Create visited array and order list.
+    # 2. Call dfs_util(source, adj, visited, order).
+    # 3. Return order.
     pass
 
 

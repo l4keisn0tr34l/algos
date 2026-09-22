@@ -14,24 +14,50 @@ Start from any vertex. Repeatedly add the minimum weight edge that connects the 
 
 ## Algorithm / Pseudocode
 
+### Main Prim Algorithm
+
 ```text
 Prim(G, start):
     MST = empty
+    create empty min-priority queue Q
+
+    for each vertex v:
+        visited[v] = false
+
     visited[start] = true
-    push all edges from start into min-heap
+    AddEdges(start, Q)
 
-    while MST has fewer than V - 1 edges:
-        edge = extract minimum edge from heap
+    while MST has fewer than V - 1 edges and Q is not empty:
+        (u, v, w) = ExtractMin(Q)
 
-        if edge leads to already visited vertex:
-            ignore it
-        else:
-            add edge to MST
-            mark new vertex visited
-            push all edges from new vertex to heap
+        if visited[v] == true:
+            continue
+
+        add edge (u, v, w) to MST
+        visited[v] = true
+
+        AddEdges(v, Q)
 
     return MST
 ```
+
+### Helper Function: AddEdges
+
+```text
+AddEdges(u, Q):
+    for each edge (u, v, w) adjacent to u:
+        if visited[v] == false:
+            Insert(Q, (u, v, w))
+```
+
+### Helper Operation: ExtractMin
+
+```text
+ExtractMin(Q):
+    remove and return edge with minimum weight from Q
+```
+
+In exams, `Insert` and `ExtractMin` can be written as min-priority queue operations.
 
 ---
 

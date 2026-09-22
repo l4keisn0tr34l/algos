@@ -15,6 +15,8 @@ Start node
 
 ## 2. Pseudocode
 
+### Main Algorithm: BFS
+
 ```text
 BFS(G, source):
     mark source visited
@@ -73,6 +75,8 @@ DFS goes as deep as possible before backtracking.
 Usually implemented using recursion or stack.
 
 ## 2. Pseudocode
+
+### Helper Function / Main Recursive Function: DFS
 
 ```text
 DFS(u):

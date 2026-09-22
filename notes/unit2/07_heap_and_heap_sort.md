@@ -34,7 +34,7 @@ parent      = (i - 1) / 2
 
 ---
 
-## 3. Max-Heapify
+## 3. Helper Function: Max-Heapify
 
 Used when a node may violate max-heap property, but its children are already heaps.
 
@@ -63,7 +63,7 @@ O(log n)
 
 ---
 
-## 4. Build Max Heap
+## 4. Helper Function: Build Max Heap
 
 ```text
 BuildMaxHeap(A, n):
@@ -79,7 +79,7 @@ O(n)
 
 ---
 
-## 5. Heap Sort
+## 5. Main Algorithm: Heap Sort
 
 ```text
 HeapSort(A, n):
@@ -94,7 +94,7 @@ HeapSort(A, n):
 
 ## 6. Insert and Delete-Max Algorithms
 
-### Insert in Max Heap
+### Helper Function: Insert in Max Heap
 
 ```text
 Insert(A, key):
@@ -107,7 +107,7 @@ Insert(A, key):
         i = parent(i)
 ```
 
-### Delete Maximum
+### Helper Function: Delete Maximum
 
 ```text
 DeleteMax(A):
